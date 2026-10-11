@@ -1,0 +1,103 @@
+{
+  "name": "Midjourney by Ace Data Cloud quickstart",
+  "nodes": [
+    {
+      "id": "start",
+      "name": "Start",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "create",
+      "name": "Imagine",
+      "type": "@acedatacloud/n8n-nodes-midjourney.midjourney",
+      "typeVersion": 1,
+      "position": [
+        240,
+        0
+      ],
+      "parameters": {
+        "resource": "image",
+        "operation": "imagine",
+        "version": "8.2",
+        "mode": "fast",
+        "prompt": "A teal ceramic cube on a cream background, studio product photograph --ar 1:1"
+      },
+      "retryOnFail": false
+    },
+    {
+      "id": "wait",
+      "name": "Wait 30 Seconds",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        480,
+        0
+      ],
+      "parameters": {
+        "resume": "timeInterval",
+        "amount": 30,
+        "unit": "seconds"
+      },
+      "webhookId": "midjourney-first-image-wait"
+    },
+    {
+      "id": "get",
+      "name": "Get Task",
+      "type": "@acedatacloud/n8n-nodes-midjourney.midjourney",
+      "typeVersion": 1,
+      "position": [
+        720,
+        0
+      ],
+      "parameters": {
+        "resource": "task",
+        "operation": "get",
+        "taskId": "={{ $('Imagine').first().json.taskId }}"
+      }
+    }
+  ],
+  "connections": {
+    "Start": {
+      "main": [
+        [
+          {
+            "node": "Imagine",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Imagine": {
+      "main": [
+        [
+          {
+            "node": "Wait 30 Seconds",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 30 Seconds": {
+      "main": [
+        [
+          {
+            "node": "Get Task",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
