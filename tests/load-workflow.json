@@ -1,0 +1,16 @@
+{
+  "id": "aceMidjourneySmokeTest",
+  "name": "Midjourney credential boundary smoke test",
+  "nodes": [
+    { "id": "start", "name": "Start", "type": "n8n-nodes-base.manualTrigger", "typeVersion": 1, "position": [0, 0], "parameters": {} },
+    {
+      "id": "imagine", "name": "Imagine", "type": "@acedatacloud/n8n-nodes-midjourney.midjourney", "typeVersion": 1, "position": [240, 0],
+      "parameters": {
+        "resource": "image", "operation": "imagine", "version": "8.2", "mode": "fast",
+        "prompt": "A teal ceramic cube on a cream background, studio product photograph --ar 1:1"
+      }
+    }
+  ],
+  "connections": { "Start": { "main": [[{ "node": "Imagine", "type": "main", "index": 0 }]] } },
+  "settings": { "executionOrder": "v1" }
+}

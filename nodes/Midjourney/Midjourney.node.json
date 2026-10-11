@@ -1,0 +1,10 @@
+{
+  "node": "@acedatacloud/n8n-nodes-midjourney.midjourney",
+  "nodeVersion": "1.0",
+  "codexVersion": "1.0",
+  "categories": ["Marketing & Content"],
+  "resources": {
+    "primaryDocumentation": [{ "url": "https://github.com/AceDataCloud/MidjourneyN8N#quick-start" }],
+    "credentialDocumentation": [{ "url": "https://github.com/AceDataCloud/MidjourneyN8N#credentials" }]
+  }
+}
