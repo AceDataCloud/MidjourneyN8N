@@ -2,7 +2,7 @@
 
 Generate one Midjourney image grid, then query the same task until it finishes. This community package connects only Midjourney through Ace Data Cloud. The screenshots below show an actual self-hosted n8n 2.42.3 instance in English. n8n Creator Portal verification is pending.
 
-**Package:** `@acedatacloud/n8n-nodes-midjourney` · [Midjourney Imagine API and pricing](https://platform.acedata.cloud/documents/midjourney-imagine) · [Source](https://github.com/AceDataCloud/MidjourneyN8N)
+**Package:** `@acedatacloud/n8n-nodes-midjourney` · [Midjourney Imagine API and pricing](https://platform.acedata.cloud/documents/midjourney-imagine?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=midjourneyn8n_readme_documents_midjourney_imagine) · [Source](https://github.com/AceDataCloud/MidjourneyN8N)
 
 ## Quick start
 
@@ -14,7 +14,9 @@ In self-hosted n8n, sign in as an owner or admin. Open **Settings → Community 
 
 ### 2. Get an API key with Midjourney access
 
-1. Sign in at [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications).
+New account? Register and sign in first. If the Applications page has no General application yet, choose **Initialize General Application**, then continue with the key steps below.
+
+1. Sign in at [Ace Data Cloud → Applications](https://platform.acedata.cloud/console/applications?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=midjourneyn8n_readme_api_key).
 2. Open **General application** and copy its API key, or choose **Manage Keys → Create** for a separate n8n key.
 3. Check Midjourney access, current pricing and balance. If **Allowed APIs** is enabled, include both `/midjourney/imagine` and `/midjourney/tasks`.
 
@@ -54,7 +56,7 @@ Check current version 8.2 Fast pricing and account balance before executing. Kee
 
 Open **Get Task** output. Continue only when `status=succeeded`, `finished=true` and `successful=true`; then open the returned `imageUrls`. Midjourney Imagine creates a 2×2 grid. `image_url` is the preview; `raw_image_url` is the larger original when present. If the task is still processing, **do not rerun the full workflow**: it would create another paid image. Use the [query-only workflow](https://github.com/AceDataCloud/MidjourneyN8N/raw/refs/heads/main/examples/query-existing-task.json) with the original ID. The [bounded polling workflow](https://github.com/AceDataCloud/MidjourneyN8N/raw/refs/heads/main/examples/generate-and-wait.json) queries that ID for up to 30 minutes without creating another task.
 
-Compare the task's trace ID and execution time with [Ace Data Cloud usage history](https://platform.acedata.cloud/console). Any `cost.amount` is in **Credits**, not USD. Price depends on version, mode and your account package. A previous version 8.2 Fast image succeeded in Dify and deducted `0.27 Credits` under that test account; it is not a call made by this n8n package. A credentialed n8n result and bill have not yet been verified for this release.
+Compare the task's trace ID and execution time with [Ace Data Cloud usage history](https://platform.acedata.cloud/console?utm_source=opensource&utm_medium=referral&utm_campaign=evergreen&utm_content=midjourneyn8n_readme_console). Any `cost.amount` is in **Credits**, not USD. Price depends on version, mode and your account package. A previous version 8.2 Fast image succeeded in Dify and deducted `0.27 Credits` under that test account; it is not a call made by this n8n package. A credentialed n8n result and bill have not yet been verified for this release.
 
 ## Other options and troubleshooting
 
