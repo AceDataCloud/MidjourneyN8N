@@ -28,7 +28,7 @@ Copy only the application token. Do not include `Bearer `, quotation marks or a 
 
 ### 3. Save the credential in n8n
 
-Add **Midjourney by Ace Data Cloud** to a workflow. In **Credential**, choose **Connect to Midjourney by Ace Data Cloud** and create a new credential. Paste the token into **API Token**. Set **Allowed HTTP Request Domains** to **Specific Domains → `api.acedata.cloud`** and save. Use the same credential on **Imagine** and **Get Task**.
+Add **Midjourney** to a workflow. In **Credential**, choose **Connect to Midjourney** and create a new credential. Paste the token into **API Token**. Set **Allowed HTTP Request Domains** to **Specific Domains → `api.acedata.cloud`** and save. Use the same credential on **Imagine** and **Get Task**.
 
 The credential test calls the free `/openai/models` metadata route. It checks the token, while the first Imagine call checks Midjourney access.
 

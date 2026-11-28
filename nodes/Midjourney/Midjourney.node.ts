@@ -176,12 +176,12 @@ async function request(context: IExecuteFunctions, endpoint: string, body: IData
 
 export class Midjourney implements INodeType {
   description: INodeTypeDescription = {
-    displayName: 'Midjourney by Ace Data Cloud', name: 'midjourney',
+    displayName: 'Midjourney', name: 'midjourney',
     icon: { light: 'file:icon.svg', dark: 'file:icon.dark.svg' },
     group: ['transform'], version: 1,
     subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
     description: 'Imagine a Midjourney image and retrieve the same task until it finishes',
-    defaults: { name: 'Midjourney by Ace Data Cloud' },
+    defaults: { name: 'Midjourney' },
     inputs: [NodeConnectionTypes.Main], outputs: [NodeConnectionTypes.Main],
     usableAsTool: true, credentials: [{ name: 'aceDataMidjourneyApi', required: true }], properties,
   };
@@ -196,7 +196,7 @@ export class Midjourney implements INodeType {
           hasToken = typeof credentials.apiToken === 'string' && Boolean(credentials.apiToken.trim());
         } catch { /* n8n did not provide a credential. */ }
         if (!hasToken)
-          throw new NodeOperationError(this.getNode(), 'A Midjourney by Ace Data Cloud credential is required.');
+          throw new NodeOperationError(this.getNode(), 'A Midjourney credential is required.');
 
         const resource = this.getNodeParameter('resource', index) as string;
         const operation = this.getNodeParameter('operation', index) as string;
