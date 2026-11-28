@@ -2,7 +2,7 @@ import type { IAuthenticateGeneric, ICredentialTestRequest, ICredentialType, INo
 
 export class AceDataMidjourneyApi implements ICredentialType {
   name = 'aceDataMidjourneyApi';
-  displayName = 'Midjourney by Ace Data Cloud API';
+  displayName = 'Midjourney API';
   documentationUrl = 'https://github.com/AceDataCloud/MidjourneyN8N#credentials';
   icon = 'file:../nodes/Midjourney/icon.svg' as const;
   properties: INodeProperties[] = [{
